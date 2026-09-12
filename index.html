@@ -208,34 +208,30 @@
 		<a class="whatsapp" href="https://wa.me/201098258263" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
 	</div>
 	<script>
-		let audioContext;
-		let welcomePlayed = false;
+		let welcomeStarted = false;
 
 		function playWelcomeSound() {
-			if (welcomePlayed) return;
-			audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
-			const playNotes = () => {
-				if (welcomePlayed) return;
-				welcomePlayed = true;
-				const notes = [392, 440, 523.25, 659.25, 523.25];
-				const start = audioContext.currentTime;
-				notes.forEach((frequency, index) => {
-					const oscillator = audioContext.createOscillator();
-					const gain = audioContext.createGain();
-					oscillator.type = "triangle";
-					oscillator.frequency.value = frequency;
-					gain.gain.setValueAtTime(0.0001, start + index * 0.12);
-					gain.gain.exponentialRampToValueAtTime(0.22, start + index * 0.12 + 0.03);
-					gain.gain.exponentialRampToValueAtTime(0.0001, start + index * 0.12 + 0.36);
-					oscillator.connect(gain).connect(audioContext.destination);
-					oscillator.start(start + index * 0.12);
-					oscillator.stop(start + index * 0.12 + 0.4);
-				});
-			};
-			if (audioContext.state === "suspended") audioContext.resume().then(playNotes).catch(() => {});
-			else playNotes();
+			if (welcomeStarted || !("speechSynthesis" in window)) return;
+			const welcomeSpeech = new SpeechSynthesisUtterance("Welcome to Mega Advertising");
+			welcomeSpeech.lang = "en-US";
+			welcomeSpeech.rate = 0.9;
+			welcomeSpeech.pitch = 1.2;
+			welcomeSpeech.volume = 1;
+			const voices = window.speechSynthesis.getVoices();
+			if (!voices.length) {
+				window.speechSynthesis.onvoiceschanged = playWelcomeSound;
+				return;
+			}
+			const femaleVoice = voices.find((voice) => /zira|female|samantha|ava|susan|karen/i.test(voice.name) && voice.lang.toLowerCase().startsWith("en"));
+			const englishVoice = voices.find((voice) => voice.lang.toLowerCase().startsWith("en"));
+			if (femaleVoice || englishVoice) welcomeSpeech.voice = femaleVoice || englishVoice;
+			welcomeSpeech.onstart = () => { welcomeStarted = true; };
+			welcomeSpeech.onerror = () => { welcomeStarted = false; };
+			window.speechSynthesis.cancel();
+			window.speechSynthesis.speak(welcomeSpeech);
 		}
 
+		document.querySelector(".intro-screen").addEventListener("pointerdown", playWelcomeSound);
 		document.addEventListener("pointerdown", playWelcomeSound, { once: true });
 		document.addEventListener("keydown", playWelcomeSound, { once: true });
 		window.addEventListener("load", () => { setTimeout(() => { try { playWelcomeSound(); } catch (_) {} }, 350); }, { once: true });
