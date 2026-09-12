@@ -209,25 +209,35 @@
 	</div>
 	<script>
 		let audioContext;
+		let welcomePlayed = false;
 
 		function playWelcomeSound() {
+			if (welcomePlayed) return;
 			audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
-			const notes = [392, 440, 523.25, 659.25, 523.25];
-			const start = audioContext.currentTime;
-			notes.forEach((frequency, index) => {
-				const oscillator = audioContext.createOscillator();
-				const gain = audioContext.createGain();
-				oscillator.type = "triangle";
-				oscillator.frequency.value = frequency;
-				gain.gain.setValueAtTime(0.0001, start + index * 0.12);
-				gain.gain.exponentialRampToValueAtTime(0.22, start + index * 0.12 + 0.03);
-				gain.gain.exponentialRampToValueAtTime(0.0001, start + index * 0.12 + 0.36);
-				oscillator.connect(gain).connect(audioContext.destination);
-				oscillator.start(start + index * 0.12);
-				oscillator.stop(start + index * 0.12 + 0.4);
-			});
+			const playNotes = () => {
+				if (welcomePlayed) return;
+				welcomePlayed = true;
+				const notes = [392, 440, 523.25, 659.25, 523.25];
+				const start = audioContext.currentTime;
+				notes.forEach((frequency, index) => {
+					const oscillator = audioContext.createOscillator();
+					const gain = audioContext.createGain();
+					oscillator.type = "triangle";
+					oscillator.frequency.value = frequency;
+					gain.gain.setValueAtTime(0.0001, start + index * 0.12);
+					gain.gain.exponentialRampToValueAtTime(0.22, start + index * 0.12 + 0.03);
+					gain.gain.exponentialRampToValueAtTime(0.0001, start + index * 0.12 + 0.36);
+					oscillator.connect(gain).connect(audioContext.destination);
+					oscillator.start(start + index * 0.12);
+					oscillator.stop(start + index * 0.12 + 0.4);
+				});
+			};
+			if (audioContext.state === "suspended") audioContext.resume().then(playNotes).catch(() => {});
+			else playNotes();
 		}
 
+		document.addEventListener("pointerdown", playWelcomeSound, { once: true });
+		document.addEventListener("keydown", playWelcomeSound, { once: true });
 		window.addEventListener("load", () => { setTimeout(() => { try { playWelcomeSound(); } catch (_) {} }, 350); }, { once: true });
 	</script>
 </body>
