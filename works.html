@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="سابق أعمال ميجا للدعاية والإعلان - Mega Advertising.">
+    <title>سابق أعمالنا | ميجا للدعاية والإعلان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root { --ink: #17212b; --sky: #b9e8f7; --yellow: #f9c62d; --coral: #f06449; --teal: #0f8b8d; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--sky); color: var(--ink); font-family: "Cairo", sans-serif; line-height: 1.7; }
+        a { color: inherit; text-decoration: none; }
+        .page { min-height: 100vh; overflow: hidden; background: linear-gradient(135deg, rgba(255,255,255,.35), transparent 45%); }
+        nav { width: min(1180px, calc(100% - 48px)); margin: auto; padding: 25px 0; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+        .brand { display: flex; align-items: center; gap: 11px; font-weight: 900; font-size: 1.12rem; }
+        .brand small { font-size: .7rem; }
+        .brand-mark { display: grid; place-items: center; width: 43px; height: 43px; background: var(--yellow); border: 2px solid var(--ink); border-radius: 13px 5px 13px 5px; font-family: "Space Grotesk", sans-serif; box-shadow: 4px 4px 0 var(--ink); }
+        .back { padding: 10px 17px; border: 2px solid var(--ink); background: #fff; border-radius: 7px; font-weight: 800; box-shadow: 4px 4px 0 var(--ink); transition: transform .2s ease, background .2s ease, color .2s ease; }
+        .back:hover { background: #ffc0b5; color: var(--ink); transform: translate(-2px, -2px); }
+        .back:active, .back:focus-visible { background: #ffc0b5; color: var(--ink); outline: none; }
+        main { width: min(1180px, calc(100% - 48px)); margin: 55px auto 100px; }
+        .intro { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 48px; }
+        .kicker { color: var(--coral); font-weight: 900; }
+        h1 { font-size: clamp(2.7rem, 6vw, 6rem); line-height: 1; margin-top: 8px; }
+        .intro p { max-width: 310px; color: #455963; }
+        .categories { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 28px; }
+        .category-button { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 16px; border: 2px solid var(--ink); background: #fff; color: var(--ink); border-radius: 8px; font: inherit; font-weight: 900; cursor: pointer; box-shadow: 4px 4px 0 var(--ink); transition: transform .2s ease, background .2s ease, color .2s ease; }
+        .category-button:hover, .category-button.active { background: var(--yellow); transform: translate(-2px, -2px); }
+        .category-button i { color: var(--teal); font-size: 1.25rem; }
+        .category-button.banner i { color: var(--coral); }
+        .category-button.letters i { color: var(--ink); }
+        .category-button.active i { color: var(--ink); }
+        .gallery { display: grid; grid-template-columns: 1.15fr .85fr; gap: 20px; }
+        .project { position: relative; min-height: 360px; overflow: hidden; border: 2px solid var(--ink); background: var(--ink); box-shadow: 8px 8px 0 var(--ink); }
+        .project.is-hidden { display: none; }
+        .project:first-child { grid-row: span 2; min-height: 740px; }
+        .project img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .86; transition: transform .5s ease, opacity .5s ease; }
+        .project:hover img { transform: scale(1.06); opacity: 1; }
+        .project::after { content: ""; position: absolute; inset: 35% 0 0; background: linear-gradient(transparent, rgba(23,33,43,.88)); }
+        .project-info { position: absolute; z-index: 1; right: 25px; left: 25px; bottom: 23px; color: #fff; }
+        .project-icon { position: absolute; z-index: 1; top: 22px; right: 25px; display: grid; place-items: center; width: 52px; height: 52px; border: 2px solid #fff; border-radius: 50%; font-size: 1.35rem; color: var(--yellow); background: rgba(23,33,43,.68); }
+        .project-icon.banner { color: #fff; background: var(--coral); }
+        .project-icon.letters { color: var(--ink); background: var(--yellow); font-family: "Space Grotesk", sans-serif; font-weight: 900; }
+        .project-info span { color: var(--yellow); font-family: "Space Grotesk", sans-serif; font-size: .78rem; }
+        .project-info h2 { font-size: 1.75rem; margin-top: 4px; }
+        .project-info p { color: #e8f8fb; font-size: .85rem; }
+        footer { background: var(--ink); color: #fff; padding: 25px max(24px, calc((100% - 1180px) / 2)); display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+        footer strong { color: var(--yellow); }
+        footer small { color: #c6d8dc; }
+        @media (max-width: 760px) {
+            nav, main { width: min(100% - 32px, 580px); }
+            main { margin-top: 35px; }
+            .intro { display: block; } .intro p { margin-top: 20px; }
+            .categories { grid-template-columns: repeat(2, 1fr); }
+            .gallery { grid-template-columns: 1fr; } .project, .project:first-child { min-height: 330px; grid-row: auto; }
+            footer { display: block; } footer small { display: block; margin-top: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <nav aria-label="التنقل الرئيسي">
+            <a class="brand" href="index.html"><span class="brand-mark">MA</span><span>ميجا للدعاية والإعلان<br><small>Mega Advertising</small></span></a>
+            <a class="back" href="index.html">العودة للرئيسية ↩</a>
+        </nav>
+        <main>
+            <section class="intro">
+                <div><span class="kicker">MEGA ADVERTISING / OUR WORK</span><h1>سابق<br><span style="color: var(--coral);">أعمالنا.</span></h1></div>
+                <p>مجموعة مختارة من الأفكار التي حوّلناها إلى هويات وحملات تلفت الانتباه وتبقى في الذاكرة.</p>
+            </section>
+            <section class="categories" aria-label="تصنيفات الأعمال">
+                <button class="category-button active" type="button" data-filter="all"><i class="fa-solid fa-grid-2" aria-hidden="true"></i> كل الأعمال</button>
+                <button class="category-button" type="button" data-filter="lighted"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> اللافتات المضيئة</button>
+                <button class="category-button banner" type="button" data-filter="banner"><i class="fa-solid fa-sign-hanging" aria-hidden="true"></i> لافتات البنر</button>
+                <button class="category-button letters" type="button" data-filter="letters"><i class="fa-solid fa-font" aria-hidden="true"></i> الحروف المضيئة</button>
+            </section>
+            <section class="gallery" aria-label="معرض أعمال ميجا">
+                <article class="project lighted"><img src="images/WhatsApp%20Image%202026-09-12%20at%206.24.36%20PM.jpeg" alt="تنفيذ واجهة محل بإضاءة وهوية بصرية"><span class="project-icon" title="لافتة مضيئة"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></span><div class="project-info"><span>01 / لافتات مضيئة</span><h2>واجهة تلفت.</h2><p>تنفيذ ميداني يجمع بين الإضاءة والهوية.</p></div></article>
+                <article class="project banner"><img src="images/WhatsApp%20Image%202026-09-12%20at%206.24.35%20PM.jpeg" alt="واجهة محل تجارية بتصميم إعلاني"><span class="project-icon banner" title="لافتة بنر"><i class="fa-solid fa-sign-hanging" aria-hidden="true"></i></span><div class="project-info"><span>02 / لافتات بنر</span><h2>حضور من بعيد.</h2><p>لافتة واضحة تجعل العلامة حاضرة في الشارع.</p></div></article>
+                <article class="project letters"><img src="images/WhatsApp%20Image%202026-09-12%20at%206.24.34%20PM.jpeg" alt="تنفيذ ديكور وإعلان داخلي"><span class="project-icon letters" title="حروف مضيئة"><i class="fa-solid fa-font" aria-hidden="true"></i></span><div class="project-info"><span>03 / حروف مضيئة</span><h2>تفاصيل محسوبة.</h2><p>هوية متكاملة تمتد من الخارج إلى الداخل.</p></div></article>
+                <article class="project lighted"><img src="images/WhatsApp%20Image%202026-09-12%20at%206.24.33%20PM.jpeg" alt="تركيب لوحة إعلانية مضيئة"><span class="project-icon" title="لافتة مضيئة"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></span><div class="project-info"><span>04 / لافتات مضيئة</span><h2>نضيء الفكرة.</h2><p>حلول إضاءة تمنح المكان حضورًا مختلفًا.</p></div></article>
+                <article class="project letters"><img src="images/WhatsApp%20Image%202026-09-12%20at%206.24.31%20PM.jpeg" alt="واجهة تجارية من أعمال ميجا"><span class="project-icon letters" title="حروف مضيئة"><i class="fa-solid fa-font" aria-hidden="true"></i></span><div class="project-info"><span>05 / حروف مضيئة</span><h2>هوية على أرض الواقع.</h2><p>تحويل التصميم إلى تجربة يراها الجمهور.</p></div></article>
+                <article class="project banner"><img src="images/WhatsApp%20Image%202026-09-12%20at%206.24.31%20PM%20(1).jpeg" alt="تنفيذ إعلان خارجي لمحل"><span class="project-icon banner" title="لافتة بنر"><i class="fa-solid fa-sign-hanging" aria-hidden="true"></i></span><div class="project-info"><span>06 / لافتات بنر</span><h2>رسالة واضحة.</h2><p>إعلان خارجي مصمم ليُرى ويُتذكر.</p></div></article>
+                <article class="project letters"><img src="images/WhatsApp%20Image%202026-09-12%20at%206.24.30%20PM.jpeg" alt="تفاصيل ديكور وهوية بصرية"><span class="project-icon letters" title="حروف مضيئة"><i class="fa-solid fa-font" aria-hidden="true"></i></span><div class="project-info"><span>07 / حروف مضيئة</span><h2>الجودة في التفاصيل.</h2><p>تشطيبات دقيقة تكمل الصورة الكبيرة.</p></div></article>
+                <article class="project lighted"><img src="images/WhatsApp%20Image%202026-09-12%20at%206.24.29%20PM.jpeg" alt="تصميم واجهة بإضاءة ليلية"><span class="project-icon" title="لافتة مضيئة"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></span><div class="project-info"><span>08 / لافتات مضيئة</span><h2>يظهر حتى بالليل.</h2><p>هوية تعمل طوال اليوم وتترك أثرًا.</p></div></article>
+                <article class="project banner"><img src="images/WhatsApp%20Image%202026-09-12%20at%206.24.28%20PM.jpeg" alt="لوحة وهوية محل تجاري"><span class="project-icon banner" title="لافتة بنر"><i class="fa-solid fa-sign-hanging" aria-hidden="true"></i></span><div class="project-info"><span>09 / لافتات بنر</span><h2>اسم لا يضيع.</h2><p>تصميم يثبت العلامة في ذاكرة المارة.</p></div></article>
+                <article class="project letters"><img src="images/WhatsApp%20Image%202026-09-12%20at%206.24.27%20PM.jpeg" alt="تجهيزات إعلانية داخلية"><span class="project-icon letters" title="حروف مضيئة"><i class="fa-solid fa-font" aria-hidden="true"></i></span><div class="project-info"><span>10 / حروف مضيئة</span><h2>ننفّذها صح.</h2><p>من الفكرة إلى التركيب، كل خطوة محسوبة.</p></div></article>
+                <article class="project lighted"><img src="images/WhatsApp%20Image%202026-09-12%20at%206.24.26%20PM.jpeg" alt="إعلان مضيء على واجهة محل"><span class="project-icon" title="لافتة مضيئة"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></span><div class="project-info"><span>11 / لافتات مضيئة</span><h2>ضوء يلفت.</h2><p>إعلانات مضيئة تصنع حضورًا قويًا.</p></div></article>
+                <article class="project banner"><img src="images/WhatsApp%20Image%202026-09-12%20at%206.24.25%20PM.jpeg" alt="واجهة محل بتصميم إعلاني متكامل"><span class="project-icon banner" title="لافتة بنر"><i class="fa-solid fa-sign-hanging" aria-hidden="true"></i></span><div class="project-info"><span>12 / لافتات بنر</span><h2>من أول نظرة.</h2><p>لغة بصرية واضحة ومتماسكة.</p></div></article>
+                <article class="project letters"><img src="images/WhatsApp%20Image%202026-09-12%20at%206.24.20%20PM.jpeg" alt="عمل إعلاني ميداني من ميجا"><span class="project-icon letters" title="حروف مضيئة"><i class="fa-solid fa-font" aria-hidden="true"></i></span><div class="project-info"><span>13 / حروف مضيئة</span><h2>شغل يتشاف.</h2><p>نماذج حقيقية من أعمال ميجا للدعاية والإعلان.</p></div></article>
+            </section>
+        </main>
+        <footer><strong>ميجا للدعاية والإعلان</strong><small>للاستفسار: 01098258263 · الشرقية، العاشر من رمضان</small></footer>
+    </div>
+    <script>
+        const filterButtons = document.querySelectorAll("[data-filter]");
+        const projects = document.querySelectorAll(".project");
+
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const filter = button.dataset.filter;
+                filterButtons.forEach((item) => item.classList.toggle("active", item === button));
+                projects.forEach((project) => project.classList.toggle("is-hidden", filter !== "all" && !project.classList.contains(filter)));
+            });
+        });
+    </script>
+</body>
+</html>
