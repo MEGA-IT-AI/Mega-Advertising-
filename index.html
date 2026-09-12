@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مستشفى ابن سينا</title>
+    <!-- مكتبة الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #0056b3, #d9534f, #0275d8, #c9302c);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 520px;
+            width: 100%;
+        }
+
+        .top-logo {
+            width: 140px;
+            height: 140px;
+            margin-bottom: -40px;
+            z-index: 3;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+        }
+
+        .top-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 50px 40px 40px 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            width: 100%;
+            backdrop-filter: blur(8px);
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            color: #0056b3;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .info-section {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-right: 4px solid #0056b3;
+            text-align: right;
+        }
+
+        .info-item {
+            font-size: 15px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-title {
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #0056b3;
+            margin-bottom: 8px;
+            text-align: right;
+        }
+
+        /* تنسيق أزرار الاتصال والواتساب داخل المربع */
+        .contact-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            font-size: 14px;
+            transition: transform 0.2s ease;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-call {
+            background-color: #0275d8;
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+        }
+
+        .btn {
+            display: block;
+            background-color: #0056b3;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #e60000;
+        }
+
+        /* الأزرار العائمة أسفل الشاشة */
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 999;
+        }
+
+        .float-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .float-whatsapp {
+            background-color: #25d366;
+        }
+
+        .float-call {
+            background-color: #0275d8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="top-logo">
+            <img src="Logo HD.png" alt="شعار مستشفى ابن سينا">
+        </div>
+
+        <div class="container">
+            <h1>مرحباً بكم في مستشفى ابن سينا العاشر من رمضان</h1>
+            <p>نحن هنا لرعايتكم وتقديم أفضل الخدمات الطبية المتميزة بأعلى معايير الجودة والراحة.</p>
+            
+            <div class="info-section">
+                <div class="info-item">
+                    <span class="info-title">📍 العنوان:</span>
+                    <span>العاشر من رمضان - المجاورة العاشر - امام النادي </span>
+                </div>
+            </div>
+
+            <!-- أزرار الاتصال المباشر -->
+            <div class="section-title">📞 للاتصال الهاتفي السريع:</div>
+            <div class="contact-group">
+                <a href="tel:01222243156" class="action-btn btn-call">
+                    <i class="fa-solid fa-phone"></i> اتصال (01222243156)
+                </a>
+                <a href="tel:01222243157" class="action-btn btn-call">
+                    <i class="fa-solid fa-phone"></i> اتصال (01222243157)
+                </a>
+            </div>
+
+            <!-- أزرار الواتساب -->
+            <div class="section-title">💬 للمراسلة عبر الواتساب:</div>
+            <div class="contact-group">
+                <a href="https://wa.me/201222243156" target="_blank" class="action-btn btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> واتساب (01222243156)
+                </a>
+                <a href="https://wa.me/201222243157" target="_blank" class="action-btn btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> واتساب (01222243157)
+                </a>
+            </div>
+
+            <a href="home.html" class="btn">الدخول علي الموقع</a>
+        </div>
+    </div>
+
+    <!-- أزرار عائمة أسفل يسار الشاشة لتسهيل الوصول الفوري -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/201222243156" target="_blank" class="float-btn float-whatsapp" title="مراسلة واتساب">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="tel:01222243157" class="float-btn float-call" title="اتصال هاتفي">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+    </div>
+
+</body>
+</html>
